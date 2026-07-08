@@ -1,16 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskCategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlbumController;
-use Inertia\Inertia;    
 
-Route::inertia('/', 'welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-])->name('home');
+Route::redirect('/', '/login')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -23,3 +19,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
   
 
 require __DIR__.'/settings.php';
+           
